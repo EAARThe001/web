@@ -1,0 +1,139 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #000; 
+    background-image: radial-gradient(circle, rgba(0,0,0,0.9) 0%, rgba(0,0,0,1) 100%); /* Fondo con un efecto de gradiente */
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    overflow: hidden;
+  }
+  
+  .container {
+    text-align: center;
+    position: relative;
+  }
+  
+  h1 {
+    font-size: 5rem;
+    position: relative;
+    z-index: 2;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), /* Sombra blanca brillante */
+    0 0 20px rgba(252, 252, 252, 0.841), 
+    0 0 30px rgba(255, 255, 255, 0.5); /* Sombra de color amarillo para dar un brillo */
+    font-family: Brush Script MT;
+  }
+  
+  #birthday-text span {
+    display: inline-block;
+    position: relative;
+    margin: 0 20px;
+    visibility: hidden; /* Cambié de opacidad a visibilidad */
+  }
+  
+  #firework-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+  
+  .firework {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background-color: rgba(253, 242, 242, 0.938);
+    border-radius: 50%;
+    opacity: 0;
+    animation: firework 1.5s ease-out forwards;
+  }
+  
+  @keyframes firework {
+    0% {
+      opacity: 1;
+      transform: translateY(100vh) scale(0.5);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(0) scale(2);
+    }
+  }
+  
+  .balloon {
+    position: absolute;
+    width: 40px;
+    height: 60px;
+    background-color: #ff007f; /* Color más brillante para los globos */
+    border-radius: 50%;
+    border-bottom: 5px solid #333;
+    opacity: 0;
+    animation: floatUp 3s ease-in forwards;
+    box-shadow: 0 0 10px rgba(255, 0, 127, 0.8), /* Sombra brillante en los globos */
+              0 0 20px rgba(255, 0, 127, 0.5);
+  }
+  
+  .balloon::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    width: 2px;
+    height: 30px;
+    background-color: #333;
+  }
+  
+  @keyframes floatUp {
+    0% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-1000px);
+      opacity: 0;
+    }
+  }
+  
+  #next-btn {
+    display: none;
+    padding: 15px 30px;
+    font-size: 1.5rem;
+    background-color: #eb50ff2e;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    margin-top: 20px;
+    font-family:  Brush Script MT;
+    box-shadow: 0 0 10px rgba(148, 86, 255, 0.856); /* Sombra brillante en el botón */
+  }
+  
+  #next-btn:hover {
+    background-color: #d400ff22;
+    
+  }
+
+  .particle {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background-color: white;
+    border-radius: 50%;
+    opacity: 1;
+    animation: explode 1s ease-out forwards; /* Aplicar la animación de explosión */
+    /* Añadido para las posiciones finales */
+    transform: translate(var(--x), var(--y));
+  }
+  
+  @keyframes explode {
+    0% {
+      transform: translate(0, 0);
+      opacity: 1;
+    }
+    100% {
+      transform: translate(var(--x), var(--y)); /* Mover en dirección aleatoria */
+      opacity: 0; /* Hacer que se desvanezcan */
+    }
+  }
